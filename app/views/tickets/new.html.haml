@@ -1,0 +1,7 @@
+- provide(:title, 'New request')
+%h1 Please submit your request
+.row
+  .span6.offset3
+    = form_for(@ticket) do |f|
+      = render 'fields', f: f
+      = f.submit "Submit request", class: "btn btn-large btn-primary"

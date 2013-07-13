@@ -1,0 +1,7 @@
+- provide(:title, 'New status')
+%h1 Please add new status
+.row
+  .span6.offset3
+    = form_for(@status) do |f|
+      = render 'fields', f: f
+      = f.submit "Add status", class: "btn btn-large btn-primary"

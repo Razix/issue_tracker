@@ -1,14 +1,14 @@
 class Ticket < ActiveRecord::Base
-  attr_accessible :body, :email, :issue, :name, :subject, :unique_reference, :status_id
+  attr_accessible :body, :email, :issue, :name, :subject, :unique_reference, :status_id, :admin_id
 
   ISSUE = [['General'], ['Account'], ['Billing'], ['Technical']]
   VALID_EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
 
-  # validates :name, presence: true, length: { maximum: 30 }
+  validates :name, presence: true, length: { maximum: 30 }
   validates :email, presence: true,
             format: { with: VALID_EMAIL_REGEX }
-  # validates :subject, presence: true, length: { maximum: 70 }
-  # validates :body, presence: true, length: { minimum: 30 }
+  validates :subject, presence: true, length: { maximum: 70 }
+  validates :body, presence: true, length: { minimum: 30 }
 
   before_create :generate_unique_reference, :default_status
   after_create :send_confirmation
@@ -17,6 +17,7 @@ class Ticket < ActiveRecord::Base
   friendly_id :unique_reference
 
   belongs_to :status
+  belongs_to :admin
 
   def generate_unique_reference
     self.unique_reference = loop do

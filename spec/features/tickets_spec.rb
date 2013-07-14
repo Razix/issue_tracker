@@ -37,7 +37,7 @@ describe "Ticket pages" do
         fill_in "Body", with: "#{'a'*31}"
       end
 
-    describe "after saving the user" do
+    describe "after saving the ticket" do
         before { click_button submit }
         let(:ticket) { Ticket.find_by_email('new@user.com') }
 

@@ -1,0 +1,7 @@
+- provide(:title, 'Sign up')
+%h1 Time to Sign Up!
+.row
+  .span6.offset3
+    = form_for(@admin) do |f|
+      = render 'fields', f: f
+      = f.submit "Create account", class: "btn btn-large btn-primary"

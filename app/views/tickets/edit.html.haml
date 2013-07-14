@@ -1,0 +1,8 @@
+- provide(:title, 'Edit ticket')
+%h1 Edit ticket
+
+.row
+  .span6.offset3
+    = form_for(@ticket) do |f|
+      = render 'fields', f: f
+      = f.submit "Update information", class: "btn btn-large btn-primary"

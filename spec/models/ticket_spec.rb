@@ -57,7 +57,7 @@ describe Ticket do
   describe "when email format is invalid" do
     it "should be invalid" do
       email_address = %w[custo@.er@test.com customer.email.com
-                        customer@super_mail.com emails@dot+com
+                        customer+super+mail.com emails@dot+com
                         customer.email.com my@email@email.com]
       email_address.each do |invalid_address|
         @ticket.email = invalid_address

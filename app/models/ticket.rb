@@ -18,6 +18,7 @@ class Ticket < ActiveRecord::Base
 
   belongs_to :status
   belongs_to :admin
+  has_many :comments, dependent: :destroy
 
   def generate_unique_reference
     self.unique_reference = loop do
@@ -32,6 +33,31 @@ class Ticket < ActiveRecord::Base
 
   def send_confirmation
     TicketMailer.ticket_submission(self).deliver
+  end
+
+  def self.search(search)
+    if search
+      find(:all, conditions: ['name LIKE ? OR unique_reference LIKE ? OR body LIKE ?', 
+                              "%#{search}%", "%#{search}%", "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
+
+  def self.unassigned
+    where(admin_id: nil)
+  end
+
+  def self.open
+    find(:all, joins: :status, conditions: { statuses: { value: ['Waiting for Staff Response', 'Waiting for Customer'] } })
+  end
+
+  def self.hold
+    find(:all, joins: :status, conditions: { statuses: { value: 'On Hold' } })
+  end
+
+  def self.closed
+    find(:all, joins: :status, conditions: { statuses: { value: ['Cancelled', 'Completed'] } })
   end
 
 end

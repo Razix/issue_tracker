@@ -13,6 +13,7 @@ describe Admin do
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
+  it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
 
   it { should be_valid }
@@ -76,6 +77,11 @@ describe Admin do
       @admin.save
       @admin.reload.username.should == mixed_case_username.downcase
     end
+  end
+
+  describe "remember token" do
+    before { @admin.save }
+    its(:remember_token) { should_not be_blank }
   end
 
 end

@@ -9,6 +9,16 @@
 = f.label :issue
 = f.select :issue, Ticket::ISSUE
 %br/
+- if signed_in?
+  = f.label :admin, "Assignee"
+  = f.collection_select :admin_id, Admin.order(:username), :id, :username, include_blank: true
+  %br/
+  = f.label :status
+  = f.collection_select :status_id, Status.all, :id, :value
+  %br/
+  = link_to 'Add new Status', new_status_path, class: "add-status-link"
+  %br/
+%br/
 = f.label :subject
 = f.text_field :subject
 %br/

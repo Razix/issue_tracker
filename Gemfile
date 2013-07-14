@@ -4,6 +4,8 @@ gem 'rails', '3.2.13'
 gem 'haml-rails'
 gem 'friendly_id'
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem "select2-rails"
+gem 'bootstrap-sass'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -11,6 +13,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
 group :production do

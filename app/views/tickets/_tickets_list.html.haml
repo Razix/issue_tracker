@@ -1,0 +1,15 @@
+.row
+  .span6.offset3
+    %table
+      %tr
+        %td.headers.subject
+          %i Subject
+        %td.headers
+          %i Action
+      - @tickets.each do |ticket|
+        %tr
+          %td.ticket_subject
+            = link_to ticket.subject, ticket
+          %td
+            = link_to 'Edit', edit_ticket_path(ticket)
+            

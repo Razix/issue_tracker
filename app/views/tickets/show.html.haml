@@ -1,2 +1,53 @@
 - provide(:title, "Ticket #{@ticket.unique_reference}")
 %h1 Ticket #{@ticket.unique_reference}
+
+.row
+  .span6.offset3
+    %p#notice= notice
+    %p
+      %b Reporter name:
+      = @ticket.name
+    %p
+      %b Reporter email:
+      = @ticket.email
+    %p
+      %b Issue type:
+      = @ticket.issue
+    %p
+      %b Subject:
+      = @ticket.subject
+    %p
+      %b Description:
+      = wrap(@ticket.body)
+    %br/
+
+    %h2 Replies:
+    -if !@ticket.comments.empty?
+      - @ticket.comments.each do |comment|
+        %p
+          -if comment.admin
+            %hr/
+            %span.content= wrap(comment.reply)
+            %span.timestamp Posted #{time_ago_in_words(comment.created_at)} ago
+            %br/
+            %span.posted-by by staff member
+            %b
+              %i #{comment.admin.username}
+          -else
+            %hr/
+            %span.content= wrap(comment.reply)
+            %span.timestamp Posted #{time_ago_in_words(comment.created_at)} ago
+            %br/
+            %span.posted-by by ticket reporter
+            %b
+              %i #{@ticket.name}
+    -else
+      %b
+        %i No replies yet ;(  
+    %br/
+
+    %h2 Add your reply:
+    = form_for([@ticket, @ticket.comments.build]) do |f|
+      %p
+        = f.text_area :reply
+      = f.submit "Post comment", class: "btn btn-large btn-primary"

@@ -1,6 +1,8 @@
 class StatusesController < ApplicationController
   respond_to :html, :json
 
+  before_filter :signed_in_admin
+
   def new
     @status = Status.new
     session[:return_to] = request.referer
@@ -19,5 +21,4 @@ class StatusesController < ApplicationController
     @status = Status.find(params[:id])
     respond_with @status
   end
-
 end

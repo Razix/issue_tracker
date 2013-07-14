@@ -1,2 +1,25 @@
 Support Issue Tracking
 Training task, by Bogdan R.
+
+Notes about the customer interface
+ 
+- Customers do not need to login to submit a query (their name, email address, department of issue, subject and the full body of the request)
+- Each new ticket is assigned a unique reference in the format similar to ABC-123456.
+- When a new ticket is added, the customer receives an email confirming their request has been received along with their unique reference. 
+- There is also included a URL, which can be used to view the ticket’s history and update tickets.
+ 
+Notes about the management interface
+ 
+- Each member of staff has a username & password to login to the system
+- Staff can view a list of all unassigned, open tickets and take ownership.
+- Staff is able to reply to the ticket by simply entering their response into a text field.
+- Staff members can change the owner or status.
+- All replies are e-mailed to the client.
+- Each ticket can be assigned a status - ʻWaiting for Staff Responseʼ, ʻWaiting for Customerʼ, ʻOn Holdʼ, ʻCancelledʼ or ʻCompletedʼ and further status may be added in the future.
+- When a ticket is first created or updated by the customer, it is assigned the ʻWaiting for Staff Responseʼ status.
+- There are four main views interface: 
+   - New unassigned tickets
+   - Open Tickets 
+   - On hold tickets 
+   - Closed Tickets
+- Staff is able to quickly open up a new ticket by entering itʼs reference number into a search field. They may also wish to search based on the ticket subject. Also please allow users to look for words or combinations of words found in the ticket. If there are 2 or more results, you will get list of searched items and if there is only 1 result, you will be redirected to it's page
